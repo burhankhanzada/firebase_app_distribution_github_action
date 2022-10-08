@@ -1,0 +1,14 @@
+{
+    "apps": [
+        {
+            "app_id": "1:23456789:android:123456789123456789",
+            "app": "/app.apk",
+            "groups": "all"
+        },
+        {
+            "app_id": "1:23456789:android:123456789123456789",
+            "app": "/build/app.apk",
+            "groups": "testers,qa"
+        }
+    ]
+}

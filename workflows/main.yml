@@ -1,0 +1,44 @@
+name: Test & Example workflow
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  single_app_root:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Single app at project root
+        uses: ./
+        with:
+          service_account_key_json: ${{ secrets.SERVICE_ACCOUNT_KEY_JSON }}
+          app_id: ${{ secrets.FIREBASE_APP_ID }}
+          app: app.apk
+          groups: all
+
+  single_app_path:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Single app at specific path
+        uses: ./
+        with:
+          service_account_key_json: ${{ secrets.SERVICE_ACCOUNT_KEY_JSON }}
+          app_id: ${{ secrets.FIREBASE_APP_ID }}
+          app: /build/app.apk
+          groups: all
+
+  multiple_apps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Multiple apps with json
+        uses: ./
+        with:
+          service_account_key_json: ${{ secrets.SERVICE_ACCOUNT_KEY_JSON }}
+          multiple_apps_json: ${{ secrets.APPS_JSON }}
