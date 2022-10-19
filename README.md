@@ -101,8 +101,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
 
-      - uses: burhankhanzada/firebase_app_distribution_github_action@main
-        uses: ./
+      - name: Multiple apps with json
+        uses: burhankhanzada/firebase_app_distribution_github_action@main
         with:
           service_account_key_json: ${{ secrets.SERVICE_ACCOUNT_KEY_JSON }}
           multiple_apps_json: ${{ secrets.APPS_JSON }}
