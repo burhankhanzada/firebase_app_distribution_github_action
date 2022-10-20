@@ -15,6 +15,14 @@ inputs:
     description: "App to upload (.apk or .ipa)"
     required: false
 
+  release_notes:
+    description: "Release notes visible on release page"
+    required: false
+
+  release_notes_file:
+    description: "Release notes visible on release page"
+    required: false
+
   groups:
     description: "Groups of testers seperated by comma"
     required: false
