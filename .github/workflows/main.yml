@@ -16,6 +16,7 @@ jobs:
           app_id: ${{ secrets.FIREBASE_APP_ID }}
           app: app.apk
           groups: all
+          release_notes: "Single app at project root release notes"
 
   single_app_path:
     runs-on: ubuntu-latest
@@ -30,6 +31,7 @@ jobs:
           app_id: ${{ secrets.FIREBASE_APP_ID }}
           app: /build/app.apk
           groups: all
+          release_notes_file: "release_notes.txt"
 
   multiple_apps:
     runs-on: ubuntu-latest

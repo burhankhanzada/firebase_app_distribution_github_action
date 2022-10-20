@@ -41,12 +41,26 @@ uploadSingleArtifact() {
         exit 1
     fi
 
+    echo "INPUT_RELEASE_NOTE:=$INPUT_RELEASE_NOTES"
+    echo "INPUT_RELEASE_NOTES_FILE=$INPUT_RELEASE_NOTES_FILE"
+
+    if [ -f "$INPUT_RELEASE_NOTES_FILE" ]; then
+        RELEASE_NOTES=""
+        RELEASE_NOTES_FILE=$INPUT_RELEASE_NOTES_FILE
+    else
+        RELEASE_NOTES_FILE=""
+        RELEASE_NOTES=$INPUT_RELEASE_NOTES
+    fi
+
     echo "Uploading single app"
 
     firebase appdistribution:distribute \
         $INPUT_APP \
         --app "$INPUT_APP_ID" \
-        --groups "$INPUT_GROUPS"
+        --groups "$INPUT_GROUPS" \
+        ${RELEASE_NOTES:+ --release-notes $RELEASE_NOTES} \
+        ${RELEASE_NOTES_FILE:+ --release-notes-file $RELEASE_NOTES_FILE}
+
 }
 
 uploadMultipleArtifacts() {
