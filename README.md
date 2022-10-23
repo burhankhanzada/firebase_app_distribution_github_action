@@ -21,6 +21,14 @@ App to upload (.apk or .ipa)
 
 Groups of testers seperated by comma
 
+## `release_notes`
+
+Release notes string
+
+## `release_notes_file`
+
+Release notes file (txt)
+
 ## `multiple_apps_json`
 
 Json file for multiple apps
