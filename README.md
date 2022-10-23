@@ -21,6 +21,14 @@ App to upload (.apk or .ipa)
 
 Groups of testers seperated by comma
 
+## `release_notes`
+
+Release notes string
+
+## `release_notes_file`
+
+Release notes file (txt)
+
 ## `multiple_apps_json`
 
 Json file for multiple apps
@@ -31,12 +39,14 @@ Json file for multiple apps
         {
             "app_id": "1:23456789:android:123456789123456789",
             "app": "/app.apk",
-            "groups": "all"
+            "groups": "all",
+            "release_notes": "Single app at project root release notes"
         },
         {
             "app_id": "1:23456789:android:123456789123456789",
             "app": "/build/app.apk",
-            "groups": "testers,qa"
+            "groups": "testers,qa",
+            "release_notes_file": "release_notes.txt"
         }
     ]
 }
@@ -80,6 +90,7 @@ jobs:
           app_id: ${{ secrets.FIREBASE_APP_ID }}
           app: app.apk
           groups: all
+          release_notes: "Single app at project root release notes"
 
   single_app_path:
     runs-on: ubuntu-latest
@@ -94,6 +105,7 @@ jobs:
           app_id: ${{ secrets.FIREBASE_APP_ID }}
           app: /build/app.apk
           groups: all
+          release_notes_file: "release_notes.txt"
 
   multiple_apps:
     runs-on: ubuntu-latest
